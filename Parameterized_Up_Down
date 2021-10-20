@@ -1,4 +1,4 @@
-//Behavioral Model of 32-bit up-down counter 
+//Behavioral Model of 64-bit up-down counter 
 //With chip enable and synchronous active low reset
 module counter_64_b( 
 count,clk,up_down,rst,ce
