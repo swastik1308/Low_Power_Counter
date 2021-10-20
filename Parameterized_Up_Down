@@ -1,0 +1,25 @@
+//Behavioral Model of 32-bit up-down counter 
+//With chip enable and synchronous active low reset
+module counter_64_b( 
+count,clk,up_down,rst,ce
+);
+parameter width = 64;
+input clk,up_down,rst,ce;
+output reg[width-1:0] count;
+//wire gated_clk;
+//assign gated_clk = clk & ce;
+always @(posedge clk) begin
+if(ce) //The computation takes place only when CE is high
+    begin
+    if (!rst)
+        count <= {width{1'b0}}; //Synchronous active low reset
+    else
+        begin
+        if (up_down)
+            count <= count+1'b1; //Count upwards when up_down is high
+        else
+            count <= count-1'b1; //Count downwards when up_down is low
+        end
+    end 
+end
+endmodule
